@@ -19,8 +19,16 @@ class ExamenTest extends TestCase
     /**
      * @test
      */
-    public function givenProductWithoutAmountReturnsThisProductWithOneAmount(): void
+    public function whenAddProductWithoutAmountReturnsThisProductWithOneAmount(): void
     {
         $this->assertEquals('pan x1', $this->list->getList('añadir pan'));
+    }
+
+    /**
+     * @test
+     */
+    public function whenAddProductWithAmountReturnsThisProductWithHisAmount(): void
+    {
+        $this->assertEquals('pan x5', $this->list->getList('añadir pan 5'));
     }
 }
