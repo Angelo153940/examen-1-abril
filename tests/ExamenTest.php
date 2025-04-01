@@ -31,4 +31,13 @@ class ExamenTest extends TestCase
     {
         $this->assertEquals('pan x5', $this->list->getList('añadir pan 5'));
     }
+
+    /**
+     * @test
+     */
+    public function whenDeleteProductReturnsTheListWithoutThisProduct(): void
+    {
+        $this->list->getList('añadir pan 5');
+        $this->assertEquals('', $this->list->getList('eliminar pan'));
+    }
 }

@@ -18,12 +18,16 @@ class Examen
     {
         $instruction = explode(' ', $instruction);
 
-        if (empty($instruction[2])) {
-            array_push($this->products, $instruction[1] . ' ' . 'x1');
-            return $instruction[1] . ' ' . 'x1';
+        if ($instruction[0] == "añadir") {
+            if (empty($instruction[2])) {
+                array_push($this->products, $instruction[1] . ' ' . 'x1');
+                return $instruction[1] . ' ' . 'x1';
+            }
+
+            array_push($this->products, $instruction[1] . ' ' . 'x' . $instruction[2]);
+            return $instruction[1] . ' ' . 'x' . $instruction[2];
         }
 
-        array_push($this->products, $instruction[1] . ' ' . 'x' . $instruction[2]);
-        return $instruction[1] . ' ' . 'x' . $instruction[2];
+        return '';
     }
 }
