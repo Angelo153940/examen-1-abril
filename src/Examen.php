@@ -13,26 +13,35 @@ class Examen
         $this->products = [];
     }
 
+    private function emptyList(): void
+    {
+        while (!empty($this->products)) {
+            array_pop($this->products);
+        }
+    }
+
+    private function addList($instruction): string
+    {
+        if (empty($instruction[2])) {
+            array_push($this->products, $instruction[1] . ' ' . 'x1');
+            return $instruction[1] . ' ' . 'x1';
+        }
+
+        array_push($this->products, ', ', $instruction[1] . ' ' . 'x' . $instruction[2]);
+        return $instruction[1] . ' ' . 'x' . $instruction[2];
+    }
 
     public function getList(string $instruction): string
     {
         $instruction = explode(' ', $instruction);
 
         if ($instruction[0] == "vaciar") {
-            while (!empty($this->products)) {
-                array_pop($this->products);
-            }
+            $this->emptyList();
             return '';
         }
 
         if ($instruction[0] == "añadir") {
-            if (empty($instruction[2])) {
-                array_push($this->products, $instruction[1] . ' ' . 'x1');
-                return $instruction[1] . ' ' . 'x1';
-            }
-
-            array_push($this->products, $instruction[1] . ' ' . 'x' . $instruction[2]);
-            return $instruction[1] . ' ' . 'x' . $instruction[2];
+            return $this->addList($instruction);
         }
 
         return '';
