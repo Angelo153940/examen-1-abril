@@ -8,4 +8,10 @@ class Examen
 {
     // TODO: Examen Kata
 
+    public function getList(string $instruction): string
+    {
+        $instruction = explode(' ', $instruction);
+
+        return $instruction[1] . ' ' . 'x1';
+    }
 }
