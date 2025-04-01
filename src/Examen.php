@@ -18,6 +18,13 @@ class Examen
     {
         $instruction = explode(' ', $instruction);
 
+        if ($instruction[0] == "vaciar") {
+            while (!empty($this->products)) {
+                array_pop($this->products);
+            }
+            return '';
+        }
+
         if ($instruction[0] == "añadir") {
             if (empty($instruction[2])) {
                 array_push($this->products, $instruction[1] . ' ' . 'x1');

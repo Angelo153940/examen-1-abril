@@ -40,4 +40,14 @@ class ExamenTest extends TestCase
         $this->list->getList('añadir pan 5');
         $this->assertEquals('', $this->list->getList('eliminar pan'));
     }
+
+    /**
+     * @test
+     */
+    public function whenEmptyTheListReturnsVoidString(): void
+    {
+        $this->list->getList('añadir pan 5');
+        $this->list->getList('añadir leche 3');
+        $this->assertEquals('', $this->list->getList('vaciar'));
+    }
 }
